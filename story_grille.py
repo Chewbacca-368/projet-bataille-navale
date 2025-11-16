@@ -1,4 +1,5 @@
-# from grille import Grille
+from grille import Grille
+
 
 def story_grille():
     """
@@ -12,21 +13,29 @@ def story_grille():
     4- Tirer à l'endroit indiqué sur la grille
     5- Retour en 2
     """
-
-    # grille = Grille(5, 8)
+    print("User story : Plouf dans l'eau !")
+    print("Entrez 'exit' pour quitter.")
+    grille = Grille(5, 8)
+    print(grille)
+    print()
 
     while True:
-        # grille.afficher()
-
         try:
-            x = int(input("Entrez la coordonnée x : "))
-            y = int(input("Entrez la coordonnée y : "))
+            x = input("Entrez la coordonnée x pour tirer (entre 0 et " + str(grille.nb_colonnes - 1) + "): ")
+            if x.lower() == 'exit':
+                print("Fin de la user story 'Plouf dans l'eau'.")
+                break
 
-            # grille.tirer(x, y)
-            print("Tir effectué en (" + str(x) + "," + str(y) + ")")
+            y = int(input("Entrez la coordonnée y pour tirer (entre 0 et " + str(grille.nb_lignes - 1) + "): "))
+
+            grille.tirer(y, int(x))
+            print(grille)
+            print()
 
         except ValueError:
             print("L'entrée est incorrecte, réessaie.")
+        except IndexError:
+            print("Coordonnées en dehors de la grille, réessaie.")
 
 
 if __name__ == "__main__":
