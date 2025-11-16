@@ -33,4 +33,4 @@ class Grille:
 
         for ligne, colonne in bateau.positions:
             emplacement = self._index(ligne, colonne)
-            self.matrice[emplacement] = self.bateau
+            self.matrice[emplacement] = bateau.marque
