@@ -11,9 +11,10 @@ class Grille:
     def _index(self, ligne, colonne):
         return ligne * self.nb_colonnes + colonne
 
-    def tirer(self, ligne, colonne):
+    def tirer(self, ligne, colonne, touche='x'):
+        self.touche = touche
         impact = self._index(ligne, colonne)
-        self.matrice[impact] = self.touche
+        self.matrice[impact] = touche
 
     def __str__(self):
         lignes = []
