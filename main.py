@@ -13,6 +13,7 @@ def placer_bateaux_aleatoirement(grille, bateau):
         for ligne in range(max_ligne + 1):
             for col in range(max_col + 1):
                 temp = type(bateau)(ligne, col, vertical=vertical)
+
                 chevauchement = False
                 for (l, c) in temp.positions:
                     index = grille._index(l, c)
@@ -26,7 +27,6 @@ def placer_bateaux_aleatoirement(grille, bateau):
     bateau.ligne = ligne
     bateau.colonne = col
     bateau.vertical = vertical
-    grille.ajoute(bateau)
 
 
 def main():
@@ -39,10 +39,31 @@ def main():
     print("Bienvenue dans le jeu de la bataille navale !")
     print("Voici la grille avec la flotte de bauteaux placée aléatoirement :")
     print(g)
+    print()
 
-    # Demande à l'utilisateur de tirer
-    # Affiche la grille après le tir
-    # Continue jusqu'à ce que tous les bateaux soient coulés
+    coups = 0
+    while flotte:
+        try:
+            ligne = int(input("Entrez la ligne (0-7) : "))
+            colonne = int(input("Entrez la colonne (0-9) : "))
+
+            coups += 1
+            touche = any((ligne, colonne) in b.positions for b in flotte)
+            g.tirer(ligne, colonne, touche="💣" if touche else "x")
+
+            for bateau in flotte[:]:
+                if bateau.coule(g):
+                    for (l, c) in bateau.positions:
+                        g.matrice[g._index(l, c)] = bateau.marque
+                    print(f"Vous avez coulé un {bateau.marque} !")
+                    flotte.remove(bateau)
+            print(g)
+            print()
+
+        except (ValueError, IndexError):
+            print("Coordonnées invalides, réessayez.")
+
+    print(f"Bravo ! Vous avez coulé tous les bateaux en {coups} coups.")
 
 
 if __name__ == "__main__":
