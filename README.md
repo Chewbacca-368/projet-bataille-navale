@@ -34,6 +34,7 @@ Les tirs sont représentés par :
 - Saisissez la **ligne** et la **colonne** pour tirer  
 - Le jeu continue jusqu’à ce que tous les bateaux soient coulés  
 - Les bateaux coulés apparaissent avec leur **symbole** respectif  
+- Tapez **exit** à tout moment pour quitter
 
 ---
 

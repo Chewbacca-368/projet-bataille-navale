@@ -37,6 +37,7 @@ def main():
         placer_bateaux_aleatoirement(g, bateau)
 
     print("Bienvenue dans le jeu de la bataille navale !")
+    print("Tapez 'exit' à tout moment pour quitter le jeu.")
     print("Voici la grille avec la flotte de bauteaux placée aléatoirement :")
     print(g)
     print()
@@ -44,9 +45,18 @@ def main():
     coups = 0
     while flotte:
         try:
-            ligne = int(input("Entrez la ligne (0-7) : "))
-            colonne = int(input("Entrez la colonne (0-9) : "))
+            ligne_input = input("Choisissez la ligne où tirer (0-7) : ")
+            if ligne_input == 'exit':
+                print("Vous avez quitté le jeu.")
+                return
 
+            colonne_input = int(input("Choisissez la colonne où tirer (0-9) : "))
+            if colonne_input == 'exit':
+                print("Vous avez quitté le jeu.")
+                return
+
+            ligne = int(ligne_input)
+            colonne = int(colonne_input)
             coups += 1
             touche = any((ligne, colonne) in b.positions for b in flotte)
             g.tirer(ligne, colonne, touche="💣" if touche else "x")
