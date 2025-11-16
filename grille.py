@@ -1,2 +1,15 @@
 class Grille:
-    pass
+
+    def __init__(self, lignes=5, colonnes=8):
+        self.nb_lignes = lignes
+        self.nb_colonnes = colonnes
+        self.vide = '∿'
+        self.touche = 'x'
+        self.matrice = [self.vide] * (lignes * colonnes)
+
+    def _index(self, ligne, colonne):
+        return ligne * self.nb_colonnes + colonne
+
+    def tirer(self, ligne, colonne):
+        impact = self._index(ligne, colonne)
+        self.matrice[impact] = self.touche
