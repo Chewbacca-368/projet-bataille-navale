@@ -54,13 +54,13 @@ def test_croiseur():
     g = Grille(5, 5)
     b = Croiseur(2, 2, vertical=True)
     assert b.longueur == 3
-    assert b.marque == "⛴️"
+    assert b.marque == "⛴️ "
     assert b.vertical
     assert b.positions == [(2, 2), (3, 2), (4, 2)]
 
     g.ajoute(b)
     for (l, c) in b.positions:
-        assert g.matrice[g._index(l, c)] == "⛴️"
+        assert g.matrice[g._index(l, c)] == "⛴️ "
 
 
 def test_torpilleur():
