@@ -5,6 +5,7 @@ class Grille:
         self.nb_colonnes = colonnes
         self.vide = '∿'
         self.touche = 'x'
+        self.bateau = '⛵'
         self.matrice = [self.vide] * (lignes * colonnes)
 
     def _index(self, ligne, colonne):
@@ -22,3 +23,13 @@ class Grille:
             ligne = "".join(self.matrice[debut:fin])
             lignes.append(ligne)
         return "\n".join(lignes)
+
+    def ajoute(self, bateau):
+        for ligne, colonne in bateau.positions:
+            if not (0 <= ligne < self.nb_lignes and 0 <= colonne < self.nb_colonnes):
+                print("Le bateau ne rentre pas dans la grille")
+                return
+
+        for ligne, colonne in bateau.positions:
+            emplacement = self._index(ligne, colonne)
+            self.matrice[emplacement] = self.bateau
