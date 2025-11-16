@@ -30,7 +30,7 @@ def test_str():
 
 def test_ajoute():
     g = Grille(2, 3)
-    b1 = Bateau(1, 0, longueur=2, vertical=False)
+    b1 = Bateau(1, 0, longueur=2, vertical=False, marque="⛵")
     g.ajoute(b1)
     assert g.matrice == ["∿", "∿", "∿", "⛵", "⛵", "∿"]
 
