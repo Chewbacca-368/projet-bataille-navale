@@ -50,7 +50,7 @@ def main():
                 print("Vous avez quitté le jeu.")
                 return
 
-            colonne_input = int(input("Choisissez la colonne où tirer (0-9) : "))
+            colonne_input = input("Choisissez la colonne où tirer (0-9) : ")
             if colonne_input == 'exit':
                 print("Vous avez quitté le jeu.")
                 return
@@ -59,7 +59,7 @@ def main():
             colonne = int(colonne_input)
             coups += 1
             touche = any((ligne, colonne) in b.positions for b in flotte)
-            g.tirer(ligne, colonne, touche="💣" if touche else "x")
+            g.tirer(ligne, colonne, touche="💣" if touche else " x")
 
             for bateau in flotte[:]:
                 if bateau.coule(g):

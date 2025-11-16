@@ -3,7 +3,7 @@ class Grille:
     def __init__(self, lignes=5, colonnes=8):
         self.nb_lignes = lignes
         self.nb_colonnes = colonnes
-        self.vide = '∿'
+        self.vide = ' ∿'
         self.touche = 'x'
         self.bateau = '⛵'
         self.matrice = [self.vide] * (lignes * colonnes)
