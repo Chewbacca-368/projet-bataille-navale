@@ -16,7 +16,7 @@ def test_init():
 
 def test_positions():
     b1 = Bateau(2, 3, longueur=3)
-    assert b1.positions() == [(2, 3), (2, 4), (2, 5)]
+    assert b1.positions == [(2, 3), (2, 4), (2, 5)]
 
     b2 = Bateau(2, 3, longueur=3, vertical=True)
-    assert b2.positions() == [(2, 3), (3, 3), (4, 3)]
+    assert b2.positions == [(2, 3), (3, 3), (4, 3)]
