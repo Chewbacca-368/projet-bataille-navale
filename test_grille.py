@@ -15,3 +15,13 @@ def test_tirer():
     g.tirer(4, 3)
     impact = g._index(4, 3)
     assert g.matrice[impact] == g.touche
+
+
+def test_str():
+    g = Grille(3, 2)
+    grille_vide = "∿∿\n∿∿\n∿∿"
+    assert str(g) == grille_vide
+
+    g.tirer(1, 1)
+    grille_apres_tir = "∿∿\n∿x\n∿∿"
+    assert str(g) == grille_apres_tir

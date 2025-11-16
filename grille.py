@@ -13,3 +13,12 @@ class Grille:
     def tirer(self, ligne, colonne):
         impact = self._index(ligne, colonne)
         self.matrice[impact] = self.touche
+
+    def __str__(self):
+        lignes = []
+        for i in range(self.nb_lignes):
+            debut = i * self.nb_colonnes
+            fin = debut + self.nb_colonnes
+            ligne = "".join(self.matrice[debut:fin])
+            lignes.append(ligne)
+        return "\n".join(lignes)
