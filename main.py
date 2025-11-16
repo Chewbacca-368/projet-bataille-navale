@@ -36,7 +36,7 @@ def main():
     for bateau in flotte:
         placer_bateaux_aleatoirement(g, bateau)
 
-    print("Bienvenue dans le jeu de la bataille navale !")
+    print("\nBienvenue dans le jeu de la bataille navale !")
     print("Tapez 'exit' à tout moment pour quitter le jeu.")
     print("Voici la grille avec la flotte de bauteaux placée aléatoirement :")
     print(g)
@@ -57,6 +57,11 @@ def main():
 
             ligne = int(ligne_input)
             colonne = int(colonne_input)
+
+            if g.matrice[g._index(ligne, colonne)] != g.vide:
+                print("Vous avez déjà tiré sur cette case, choisissez une autre.\n")
+                continue
+
             coups += 1
             touche = any((ligne, colonne) in b.positions for b in flotte)
             g.tirer(ligne, colonne, touche="💣" if touche else " x")
@@ -70,8 +75,11 @@ def main():
             print(g)
             print()
 
-        except (ValueError, IndexError):
-            print("Coordonnées invalides, réessayez.")
+        except ValueError:
+            print("L'entrée est incorrecte, réessayez.\n")
+
+        except IndexError:
+            print("Coordonnées en dehors de la grille, réessayez.\n")
 
     print(f"Bravo ! Vous avez coulé tous les bateaux en {coups} coups.")
 
